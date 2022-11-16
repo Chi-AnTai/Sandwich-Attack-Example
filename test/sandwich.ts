@@ -9,7 +9,7 @@ import ERC20ABI from '../contracts/ABI/ERC20.json';
 
 
 
-describe("LendingPoolV3", () => {
+describe("Sandwich Attack", () => {
     let pool: Contract;
     let reserves: { _reserve1: any; _reserve0: any; };
     let router: Contract;
@@ -106,5 +106,6 @@ describe("LendingPoolV3", () => {
         let swapWethAmount = userWethBalanceAfter.sub(userWethBalanceBefore)
         let profit = swapWethAmount.sub(frontrunAmount)
         console.log('profit in ETH', ethers.utils.formatEther(profit))
+        expect(profit, 'Profit should greater than 0').gt(0)
     })
 });
