@@ -30,7 +30,7 @@ describe("Sandwich Attack", () => {
     let BPS = 10000;
 
     // This is the frontrun amount you should calculate
-    let frontrunAmount;
+    let frontrunAmount = 0;
 
     before(async () => {
         // Prepare contract
@@ -61,7 +61,6 @@ describe("Sandwich Attack", () => {
 
     it('Calculate max frontrun amount', async () => {
         // You should calculate how much ETH amount can you frontrun
-        frontrunAmount = 0
     })
 
     it('Frontrun', async () => {
@@ -106,6 +105,6 @@ describe("Sandwich Attack", () => {
         let swapWethAmount = userWethBalanceAfter.sub(userWethBalanceBefore)
         let profit = swapWethAmount.sub(frontrunAmount)
         console.log('profit in ETH', ethers.utils.formatEther(profit))
-        expect(profit, 'Profit should greater than 0').gt(0)
+        expect(ethers.utils.formatEther(profit), 'Profit should greater than 0.2 ETH').gt(0.2)
     })
 });
